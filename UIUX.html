@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>📘 UI/UX Full Tutorial – Beginner → Advanced</title>
+  <style>
+    :root{
+      --bg:#0b0c10; --surface:#11131a; --panel:#0e1017; --text:#e6e8ee; --muted:#9aa3af;
+      --brand:#7c3aed; --ring:rgba(124,58,237,.45); --border:#262b3a; --radius:18px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Helvetica Neue, Arial}
+    .app{display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+    aside{background:var(--surface);border-right:1px solid var(--border);padding:1rem;position:sticky;top:0;height:100vh}
+    main{padding:1.2rem}
+    h1{font-size:clamp(1.4rem,2.8vw,2rem);margin:0 0 .6rem;font-weight:900}
+    .sub{color:var(--muted);margin-bottom:1rem}/* Buttons (Tabs) */
+.tablist{display:grid;gap:.4rem;margin-top:.6rem}
+.tab{appearance:none;border:1px solid var(--border);background:var(--panel);color:var(--text);padding:.75rem .9rem;border-radius:12px;text-align:left;cursor:pointer;font-weight:700}
+.tab[aria-selected="true"]{outline:2px solid var(--brand);}
+.tab:focus-visible{outline:3px solid var(--ring)}
+.tools{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.6rem}
+.btn{border:1px solid var(--border);background:#151826;color:var(--text);padding:.55rem .8rem;border-radius:10px;cursor:pointer;font-weight:600}
+.btn:hover{background:#1a1e2d}
+
+/* Panels */
+.panel{display:none;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1rem}
+.panel.active{display:block}
+h2{font-size:1.25rem;margin:.2rem 0 .6rem}
+h3{font-size:1.05rem;margin:.8rem 0 .3rem}
+ul{padding-left:1.1rem}
+code,kbd{background:#1a1f2e;border:1px solid var(--border);padding:.1rem .35rem;border-radius:8px}
+.note{background:#13182a;border:1px dashed #334; padding:.8rem;border-radius:12px;color:#c7d2fe}
+
+/* Responsive */
+@media (max-width:900px){
+  .app{grid-template-columns:1fr} aside{position:static;height:auto}
+  .stickyHeader{position:sticky;top:0;z-index:10;background:var(--surface);border-bottom:1px solid var(--border);padding:.6rem}
+}
+
+/* Print (so user can Save as PDF) */
+@media print{
+  body{background:#fff;color:#000}
+  aside{display:none}
+  main{padding:0}
+  .panel{display:block;border:0}
+}
+
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+    <aside>
+      <div class="stickyHeader">
+        <h1>📘 UI/UX Full Tutorial</h1>
+        <p class="sub">Beginner → Advanced. Tap a button to open a section.</p>
+        <div class="tools">
+          <button class="btn" id="expandAll">Expand all</button>
+          <button class="btn" id="collapseAll">Collapse all</button>
+          <button class="btn" id="printBtn">Save as PDF</button>
+        </div>
+      </div>
+      <div class="tablist" role="tablist" aria-label="Sections">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="p1" id="t1">1. Introduction</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p2" id="t2">2. Design Basics</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p3" id="t3">3. UX Fundamentals</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p4" id="t4">4. UI Design Skills</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p5" id="t5">5. Design Tools</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p6" id="t6">6. Practical Projects</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p7" id="t7">7. Usability Testing</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p8" id="t8">8. Portfolio & Career</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p9" id="t9">9. Resources</button>
+      </div>
+    </aside><main>
+  <!-- 1. INTRODUCTION -->
+  <section class="panel active" role="tabpanel" id="p1" aria-labelledby="t1">
+    <h2>1. Introduction</h2>
+    <p><strong>UI (User Interface):</strong> The visual elements of a product (buttons, icons, typography, color, spacing, layouts).</p>
+    <p><strong>UX (User Experience):</strong> The overall experience users have when interacting with a product (ease of use, emotions, satisfaction).</p>
+    <p><strong>Key Difference:</strong> UI = how it looks, UX = how it works & feels.</p>
+  </section>
+
+  <!-- 2. DESIGN BASICS -->
+  <section class="panel" role="tabpanel" id="p2" aria-labelledby="t2">
+    <h2>2. Design Basics</h2>
+    <h3>Principles of Design</h3>
+    <ul>
+      <li><strong>Contrast</strong> → makes important elements stand out.</li>
+      <li><strong>Alignment</strong> → everything should be visually connected.</li>
+      <li><strong>Repetition</strong> → reuse styles/components for consistency.</li>
+      <li><strong>Proximity</strong> → group related items together.</li>
+    </ul>
+    <h3>Typography</h3>
+    <ul>
+      <li>Use a <strong>maximum of 2–3 fonts</strong> in a project.</li>
+      <li>Maintain a <strong>clear hierarchy</strong>: H1 &gt; H2 &gt; body text.</li>
+      <li>Ensure readability (14–16px body text minimum).</li>
+    </ul>
+    <h3>Color Theory</h3>
+    <ul>
+      <li><strong>Blue</strong> = trust (finance, healthcare apps).</li>
+      <li><strong>Red</strong> = urgency, warning (errors, notifications).</li>
+      <li><strong>Green</strong> = success, growth.</li>
+      <li>Use tools like <em>Adobe Color</em> or <em>Coolors</em> for palettes.</li>
+    </ul>
+    <h3>Grid Systems</h3>
+    <ul>
+      <li>Follow the <strong>8px rule</strong> (margins, paddings, spacing in multiples of 8).</li>
+      <li>Common layouts: <strong>12‑column</strong> grids for web, <strong>4/8</strong> grids for mobile.</li>
+    </ul>
+  </section>
+
+  <!-- 3. UX FUNDAMENTALS -->
+  <section class="panel" role="tabpanel" id="p3" aria-labelledby="t3">
+    <h2>3. UX Fundamentals</h2>
+    <h3>User Research</h3>
+    <ul>
+      <li>Conduct <strong>interviews</strong>, <strong>surveys</strong>, <strong>field studies</strong>.</li>
+      <li>Identify pain points, goals, and user behavior.</li>
+    </ul>
+    <h3>Personas</h3>
+    <p>Create fictional characters representing user types.<br>
+    Example: <em>Ravi, 24, Student. Needs a budgeting app with simple navigation.</em></p>
+    <h3>User Flows</h3>
+    <p>Map how a user navigates:<br>
+    Example: <em>Login → Dashboard → Add Expense → Save → Review Report</em></p>
+    <h3>Wireframing</h3>
+    <ul>
+      <li>Start with <strong>low‑fidelity sketches</strong> on paper or whiteboard.</li>
+      <li>Move to digital wireframes in <strong>Figma</strong> or <strong>Balsamiq</strong>.</li>
+    </ul>
+    <h3>Prototyping</h3>
+    <ul>
+      <li>Create clickable mockups with <strong>Figma</strong>, <strong>Adobe XD</strong>, or <strong>InVision</strong>.</li>
+      <li>Test flows before development.</li>
+    </ul>
+  </section>
+
+  <!-- 4. UI DESIGN SKILLS -->
+  <section class="panel" role="tabpanel" id="p4" aria-labelledby="t4">
+    <h2>4. UI Design Skills</h2>
+    <ul>
+      <li><strong>Components</strong>: Reusable buttons, forms, cards, navbars.</li>
+      <li><strong>Imagery & Icons</strong>: Use <strong>SVG</strong> icons for scalability.</li>
+      <li><strong>Responsive Design</strong>: Test on mobile, tablet, desktop.</li>
+      <li><strong>Accessibility</strong>: Maintain color contrast, add alt text, and enable keyboard navigation.</li>
+    </ul>
+  </section>
+
+  <!-- 5. DESIGN TOOLS -->
+  <section class="panel" role="tabpanel" id="p5" aria-labelledby="t5">
+    <h2>5. Design Tools</h2>
+    <ul>
+      <li><strong>Figma</strong> → Most popular, free, web‑based. Great for collaboration.</li>
+      <li><strong>Adobe XD</strong> → Good prototyping tool (part of Adobe suite).</li>
+      <li><strong>Sketch</strong> → Popular among macOS designers.</li>
+      <li><strong>Miro</strong> → Brainstorming & user journey mapping.</li>
+      <li><strong>InVision</strong> → Prototyping & collaboration.</li>
+    </ul>
+  </section>
+
+  <!-- 6. PRACTICAL PROJECTS -->
+  <section class="panel" role="tabpanel" id="p6" aria-labelledby="t6">
+    <h2>6. Practical Projects</h2>
+    <ol>
+      <li>
+        <p><strong>Redesign a Login Page</strong><br>
+        Create a clean, minimal login/signup form in Figma. Include Google/Apple login options.</p>
+      </li>
+      <li>
+        <p><strong>E‑Commerce Landing Page</strong><br>
+        Hero section with product image & CTA (Call to Action). Product grid, filters, and checkout flow.</p>
+      </li>
+      <li>
+        <p><strong>Mobile App Prototype</strong><br>
+        Example: Expense tracker app. Screens: Login → Dashboard → Add Expense → Charts. Make it clickable in Figma.</p>
+      </li>
+    </ol>
+    <p class="note">💡 <strong>Pro Tip:</strong> Upload your designs to <em>Dribbble</em>, <em>Behance</em>, or <em>LinkedIn</em> to get feedback.</p>
+  </section>
+
+  <!-- 7. USABILITY TESTING -->
+  <section class="panel" role="tabpanel" id="p7" aria-labelledby="t7">
+    <h2>7. Usability Testing</h2>
+    <ul>
+      <li><strong>A/B Testing</strong> → Compare two design versions.</li>
+      <li><strong>Heatmaps</strong> → Use Hotjar to see where users click.</li>
+      <li><strong>User Feedback</strong> → Ask real users to test prototypes.</li>
+      <li><strong>Iteration</strong> → Improve designs based on test results.</li>
+    </ul>
+  </section>
+
+  <!-- 8. PORTFOLIO & CAREER -->
+  <section class="panel" role="tabpanel" id="p8" aria-labelledby="t8">
+    <h2>8. Portfolio & Career</h2>
+    <ul>
+      <li><strong>Portfolio:</strong> Show 3–5 strong projects.</li>
+      <li><strong>Case Studies:</strong> Present problem → research → design process → final solution.</li>
+      <li><strong>Job Prep:</strong> Common interview question: “Walk me through your design process.”</li>
+      <li><strong>Freelancing:</strong> Platforms like Upwork, Fiverr, Toptal.</li>
+    </ul>
+  </section>
+
+  <!-- 9. RESOURCES -->
+  <section class="panel" role="tabpanel" id="p9" aria-labelledby="t9">
+    <h2>9. Resources</h2>
+    <h3>Websites</h3>
+    <ul>
+      <li>learnuiux.in</li>
+      <li>careerfoundry.com</li>
+      <li>interaction-design.org</li>
+    </ul>
+    <h3>Books</h3>
+    <ul>
+      <li><em>Don’t Make Me Think</em> – Steve Krug</li>
+      <li><em>The Design of Everyday Things</em> – Don Norman</li>
+    </ul>
+    <h3>YouTube Channels</h3>
+    <ul>
+      <li>Jesse Showalter</li>
+      <li>NNgroup (Nielsen Norman Group)</li>
+      <li>Satori Graphics</li>
+    </ul>
+    <h3>Communities</h3>
+    <ul>
+      <li>Reddit → r/UI_Design, r/userexperience</li>
+      <li>Designer Hangout Slack</li>
+      <li>UX Mastery</li>
+    </ul>
+  </section>
+</main>
+
+  </div>  <script>
+    // Tabs logic (accessible)
+    const tabs = Array.from(document.querySelectorAll('.tab'));
+    const panels = Array.from(document.querySelectorAll('.panel'));
+    function showPanel(id){
+      panels.forEach(p=>p.classList.toggle('active', p.id===id));
+      tabs.forEach(t=>t.setAttribute('aria-selected', String(t.getAttribute('aria-controls')===id)));
+      document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+    }
+    tabs.forEach(tab=>{
+      tab.addEventListener('click',()=> showPanel(tab.getAttribute('aria-controls')));
+      tab.addEventListener('keydown', (e)=>{
+        const i=tabs.indexOf(tab);
+        if(e.key==='ArrowDown'){ e.preventDefault(); (tabs[i+1]||tabs[0]).focus(); }
+        if(e.key==='ArrowUp'){ e.preventDefault(); (tabs[i-1]||tabs[tabs.length-1]).focus(); }
+        if(e.key==='Home'){ e.preventDefault(); tabs[0].focus(); }
+        if(e.key==='End'){ e.preventDefault(); tabs[tabs.length-1].focus(); }
+      });
+    });
+
+    // Expand/Collapse All (turn panels into accordions temporarily)
+    const expandAll = document.getElementById('expandAll');
+    const collapseAll = document.getElementById('collapseAll');
+    expandAll.addEventListener('click',()=>{ panels.forEach(p=>p.classList.add('active')); tabs.forEach(t=>t.setAttribute('aria-selected','false')); });
+    collapseAll.addEventListener('click',()=>{ panels.forEach((p,i)=> p.classList.toggle('active', i===0)); tabs.forEach((t,i)=> t.setAttribute('aria-selected', String(i===0))); });
+
+    // Print to PDF helper
+    document.getElementById('printBtn').addEventListener('click',()=> window.print());
+  </script></body>
+</html>
